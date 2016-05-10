@@ -41,6 +41,12 @@ class FacEFrame: public wxFrame
         static const long ID_BUTTON1;
         static const long ID_BUTTON2;
         static const long ID_BUTTON3;
+        static const long ID_BUTTON11;
+        static const long ID_BUTTON22;
+        static const long ID_BUTTON33;
+        static const long ID_BUTTON111;
+        static const long ID_BUTTON222;
+        static const long ID_BUTTON333;
         static const long ID_PANEL1;
         static const long ID_MENUITEM1;
         static const long idMenuAbout;
@@ -54,7 +60,9 @@ class FacEFrame: public wxFrame
         wxButton* Button3;
         wxStatusBar* StatusBar1;
         //*)
-int face;
+bool face; //happy=0, sad=1, disgust=2
+bool mouth; //0=open/select, 1=right/move right, 2=left/move left
+int n; //incrimenter for loops
         DECLARE_EVENT_TABLE()
 };
 
