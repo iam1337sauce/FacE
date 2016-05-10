@@ -45,6 +45,12 @@ wxString wxbuildinfo(wxbuildinfoformat format)
 const long FacEFrame::ID_BUTTON1 = wxNewId();
 const long FacEFrame::ID_BUTTON2 = wxNewId();
 const long FacEFrame::ID_BUTTON3 = wxNewId();
+const long FacEFrame::ID_BUTTON11 = wxNewId();
+const long FacEFrame::ID_BUTTON22 = wxNewId();
+const long FacEFrame::ID_BUTTON33 = wxNewId();
+const long FacEFrame::ID_BUTTON111 = wxNewId();
+const long FacEFrame::ID_BUTTON222 = wxNewId();
+const long FacEFrame::ID_BUTTON333 = wxNewId();
 const long FacEFrame::ID_PANEL1 = wxNewId();
 const long FacEFrame::ID_MENUITEM1 = wxNewId();
 const long FacEFrame::idMenuAbout = wxNewId();
@@ -95,14 +101,7 @@ FacEFrame::FacEFrame(wxWindow* parent,wxWindowID id)
     StatusBar1->SetStatusStyles(1,__wxStatusBarStyles_1);
     SetStatusBar(StatusBar1);
 
- /*   Button11 = new wxButton(Panel1, ID_BUTTON11, _("Happy about current occupation"), wxPoint(0,0), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON11"));
-    Button11->Hide();
-    BoxSizer1->Add(Button11, 1, wxALL|wxALIGN_LEFT|wxALIGN_BOTTOM, 5);
-    Button22= new wxButton(Panel1, ID_BUTTON22, _("Happy about new job"), wxPoint(0,0), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON11"));
-    Button22->Hide();
-    BoxSizer1->Add(Button22, 1, wxALL|wxALIGN_RIGHT|wxALIGN_BOTTOM, 5);
-
-*/
+    Connect(ID_BUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&FacEFrame::OnButton1Select);
     Connect(ID_MENUITEM1,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&FacEFrame::OnQuit);
     Connect(idMenuAbout,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&FacEFrame::OnAbout);
     //*)
@@ -122,28 +121,35 @@ void FacEFrame::OnQuit(wxCommandEvent& event)
 void FacEFrame::OnAbout(wxCommandEvent& event)
 {
     wxString msg = wxbuildinfo(long_f);
-    wxMessageBox(msg, _("Welcome to..."));
+    wxMessageBox(msg, _("Welcome to FacE"));
 }
 
 void FacEFrame::OnButton1Select(wxCommandEvent& event)
 {
-    if (face=0){ //0 is correlating to happy
-        Button1 = new wxButton(Panel1, ID_BUTTON1, _("Happy with current occupation"), wxPoint(0,0), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON1"));
-        Button2 = new wxButton(Panel1, ID_BUTTON2, _("Happy about new job"), wxPoint(0,0), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON2"));
-        Button3 = new wxButton(Panel1, ID_BUTTON3, _("Happy about future career"), wxPoint(0,0), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON3"));
-    }
-    if (face=1){ //1 is disgust
-        Button1 = new wxButton(Panel1, ID_BUTTON1, _(" with current occupation"), wxPoint(0,0), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON1"));
-        Button2 = new wxButton(Panel1, ID_BUTTON2, _(" about new job"), wxPoint(0,0), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON2"));
-        Button3 = new wxButton(Panel1, ID_BUTTON3, _(" about future career"), wxPoint(0,0), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON3"));
-    }
-    if (face=2){ //1 is sad
-        Button1 = new wxButton(Panel1, ID_BUTTON1, _(" with current occupation"), wxPoint(0,0), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON1"));
-        Button2 = new wxButton(Panel1, ID_BUTTON2, _(" about new job"), wxPoint(0,0), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON2"));
-        Button3 = new wxButton(Panel1, ID_BUTTON3, _(" about future career"), wxPoint(0,0), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON3"));
-    }
-    else {
-        std::string str = "Make a selection with facial expression";
-    }
+    for(n=0;n<6;n++){
+        if (mouth=0){//select
+            if (face=0){ //0 is correlating to happy
+                Button1 = new wxButton(Panel1, ID_BUTTON11, _("Happy with current occupation"), wxPoint(0,0), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON11"));
+                Button2 = new wxButton(Panel1, ID_BUTTON22, _("Happy about new job"), wxPoint(0,0), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON22"));
+                Button3 = new wxButton(Panel1, ID_BUTTON33, _("Happy about future career"), wxPoint(0,0), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON33"));
+            }
+            if (face=1){ //1 is disgust
+                Button1 = new wxButton(Panel1, ID_BUTTON111, _(" with current occupation"), wxPoint(0,0), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON111"));
+                Button2 = new wxButton(Panel1, ID_BUTTON222, _(" about new job"), wxPoint(0,0), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON222"));
+                Button3 = new wxButton(Panel1, ID_BUTTON333, _(" about future career"), wxPoint(0,0), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON333"));
+            }
+            if (face=2){ //1 is sad
+                Button1 = new wxButton(Panel1, ID_BUTTON1, _(" with current occupation"), wxPoint(0,0), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON1"));
+                Button2 = new wxButton(Panel1, ID_BUTTON2, _(" about new job"), wxPoint(0,0), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON2"));
+                Button3 = new wxButton(Panel1, ID_BUTTON3, _(" about future career"), wxPoint(0,0), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON3"));
+            }
+            else {
+                std::string str = "Make a selection with facial expression";
+            }
+        if(mouth=1){//move right
 
+        }
+
+        }
+    }
 }
